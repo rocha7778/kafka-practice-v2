@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rocha.app.dto.ProductDto;
 import com.rocha.app.entity.Product;
-import com.rocha.app.service.IProductCommandService;
+import com.rocha.app.service.IProductService;
 import com.rocha.app.util.MapperUtil;
 
 @RestController
@@ -18,7 +18,7 @@ import com.rocha.app.util.MapperUtil;
 public class ProductCommandController {
 	
 	@Autowired
-	private IProductCommandService productService;
+	private IProductService productService;
 	
 	@PostMapping
 	public ProductDto createProduct(@RequestBody ProductDto product) {

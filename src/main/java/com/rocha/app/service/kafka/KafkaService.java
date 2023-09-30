@@ -15,8 +15,16 @@ public class KafkaService implements IKafkaService {
 	private KafkaTemplate<String, Object> kafkaTemplate;
 
 	@Override
-	public void sendMessage(Product producCreated, String eventType) {
-		ProductEvent event = new ProductEvent(eventType, MapperUtil.mapper(producCreated));
+	public void sendMessage(Product productCreated, String eventType) {
+		ProductEvent event = new ProductEvent(eventType, MapperUtil.mapper(productCreated));
 		kafkaTemplate.send("product-event-topic", event);
 	}
 }
+
+
+
+
+
+
+
+

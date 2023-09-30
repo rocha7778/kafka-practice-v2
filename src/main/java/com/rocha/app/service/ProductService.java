@@ -8,7 +8,7 @@ import com.rocha.app.repository.ProductRepository;
 import com.rocha.app.service.kafka.IKafkaService;
 
 @Service
-public class ProductCommandService implements IProductCommandService {
+public class ProductService implements IProductService {
 
 	@Autowired
 	private ProductRepository productRepository;
@@ -25,13 +25,18 @@ public class ProductCommandService implements IProductCommandService {
 
 	@Override
 	public Product updateProduct(long id, Product product) {
-		Product producCreated = productRepository.updateProduct(id, product);
-		kafkaService.sendMessage(producCreated, "UpdatedProduct");
-		return producCreated;
-
+		Product productCreated = productRepository.updateProduct(id, product);
+		kafkaService.sendMessage(productCreated, "UpdatedProduct");
+		return productCreated;
 	}
-
-	
-
-
 }
+
+
+
+
+
+
+
+
+
+
