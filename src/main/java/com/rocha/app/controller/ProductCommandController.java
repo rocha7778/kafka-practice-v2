@@ -1,6 +1,7 @@
 package com.rocha.app.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,7 +45,7 @@ public class ProductCommandController {
 	
 	@GetMapping
 	public List<ProductDto> getproduct(){
-		return productQuery.getProducts().stream().map(p ->  MapperUtil.mapperDaoToDto(p)).toList();
+		return productQuery.getProducts().stream().map(p ->  MapperUtil.mapperDaoToDto(p)).collect(Collectors.toList());
 	}
 
 }

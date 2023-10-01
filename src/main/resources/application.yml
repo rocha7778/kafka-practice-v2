@@ -1,24 +1,24 @@
 spring:
   application:
    name: producto-command-service
-  kafka:
-    producer:
-      bootstrap-servers: localhost:9092
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer:  org.springframework.kafka.support.serializer.JsonSerializer
+  #kafka:
+  #  producer:
+  #    bootstrap-servers: localhost:9092
+  #    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #    value-serializer:  org.springframework.kafka.support.serializer.JsonSerializer
  
-  datasource:
-    database: ${MYSQL_DATABASE:product}
-    host: ${MYSQL_HOST:localhost}
-    port: ${MYSQL_PORT:3306}
-    username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_ROOT_PASSWORD:123456}
-    url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/${spring.datasource.database}?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Bogota
+  #datasource:
+  #  database: ${MYSQL_DATABASE:product}
+  #  host: ${MYSQL_HOST:localhost}
+  #  port: ${MYSQL_PORT:3306}
+  #  username: ${MYSQL_USERNAME:root}
+  #  password: ${MYSQL_ROOT_PASSWORD:123456}
+  #  url: jdbc:mysql://${spring.datasource.host}:${spring.datasource.port}/${spring.datasource.database}?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=America/Bogota
 
-  jpa:
-    database: mysql 
-    #show-sql: true 
-    hibernate:
-      ddl-auto: update
+  #jpa:
+  #  database: mysql 
+  #  #show-sql: true 
+  #  hibernate:
+  #    ddl-auto: update
 server:
   port: 8080
