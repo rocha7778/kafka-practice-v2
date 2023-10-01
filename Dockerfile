@@ -13,6 +13,10 @@ ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
 
 
 
+
+
+
+
 # docker build -t app-rest:v1.0 .
 # docker create -p 8080:8080 --name web-rest-api  app-rest:v1.0
 # docker run -it --rm -p 8080:8080  --name web-rest-api  app-rest:v1.0

@@ -23,5 +23,25 @@ public class MapperUtil {
 		productDto.setPrice(product.getPrice());
 		return productDto;
 	}
+	
+	
+	public static  ProductDto mapperDaoToDto(Product product) {
+		ProductDto productDto = new ProductDto();
+		productDto.setDescription(product.getDescription());
+		productDto.setId(product.getId());
+		productDto.setName(product.getName());
+		productDto.setPrice(product.getPrice());
+		return productDto;
+	}
+	
+	public static Product mapperDtoToDao(ProductDto product) {
+		Product productDto = new Product();
+		productDto.setDescription(product.getDescription());
+		productDto.setId(product.getId());
+		productDto.setName(product.getName());
+		productDto.setPrice(product.getPrice());
+		return productDto;
+	}
+
 
 }
