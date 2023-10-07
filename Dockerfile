@@ -1,35 +1,39 @@
-FROM maven:3.6.3-openjdk-17 AS build
-COPY src /home/app/src
-COPY pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package
-RUN ls /home/app
+#FROM maven:3.6.3-openjdk-17 AS build
+#COPY src /home/app/src
+#COPY pom.xml /home/app
+#RUN mvn -f /home/app/pom.xml clean package
+#RUN ls /home/app
 
 # Environment variables for configuring the MySQL connection
-#ENV DB_HOST=localhost
-#ENV DB_PORT=3360
-#ENV DB_NAME=mydatabase
-#ENV DB_USERNAME=root
-#ENV DB_PASSWORD=mysecretpassword
+
+
 
 
 
 FROM openjdk:17-jdk-slim
-COPY --from=build /home/app/target/product-command-service-0.0.1-SNAPSHOT.jar /usr/local/lib/demo.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
-
-
+#COPY --from=build /home/app/target/product-command-service-0.0.1-SNAPSHOT.jar /usr/local/lib/demo.jar
 #EXPOSE 8080
-#ADD target/product-command-service-0.0.1-SNAPSHOT.jar app.jar
-#ENTRYPOINT ["java","-jar","/app.jar"]
+#ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
+
+# mvn spring-boot:run -Dspring-boot.run.arguments=--spring.main.banner-mode=off,--customArgument=custom
+
+ENV DB_HOST=mysql-product-command
+ENV DB_PORT=3360
+ENV DB_NAME=product
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=123456
+
+EXPOSE 8080
+ADD target/product-command-service-0.0.1-SNAPSHOT.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
 
 
 
 
 
-# docker build -t app-rest:v1.0 .
-# docker create -p 8080:8080 --name web-rest-api  --network cqrs app-rest:v1.0
-# docker run -it --rm -p 8080:8080  --name web-rest-api  app-rest:v1.0
+# docker build -t app-rest:v2.0 .
+# docker create -p 8080:8080 --name web-rest-api-v2  --network cqrs app-rest:v2.0
+# docker run -it --rm -p 8080:8080  --name web-rest-api  --network cqrs app-rest:v2.0
 # docker  tag app-rest:v1.0   rocha7778/app-rest:v1.0
 # docker push rocha7778/app-rest:v1.0
 # kubectl port-forward pod/web-java 8080:8080
