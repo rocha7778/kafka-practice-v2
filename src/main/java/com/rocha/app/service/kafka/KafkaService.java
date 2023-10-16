@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.rocha.app.dto.ProductEvent;
 import com.rocha.app.entity.Product;
-import com.rocha.app.util.MapperUtil;
+import com.rocha.app.util.ProductMapperUtil;
 
 @Service
 public class KafkaService implements IKafkaService {
@@ -16,7 +16,7 @@ public class KafkaService implements IKafkaService {
 
 	@Override
 	public void sendMessage(Product productCreated, String eventType) {
-		ProductEvent event = new ProductEvent(eventType, MapperUtil.mapper(productCreated));
+		ProductEvent event = new ProductEvent(eventType, ProductMapperUtil.mapper(productCreated));
 		kafkaTemplate.send("product-event-topic", event);
 	}
 }

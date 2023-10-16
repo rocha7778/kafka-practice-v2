@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rocha.app.dto.ProductDto;
+import com.rocha.app.dto.SaleRecordProductDto;
 import com.rocha.app.entity.Product;
 import com.rocha.app.service.IProductService;
-import com.rocha.app.util.MapperUtil;
+import com.rocha.app.util.ProductMapperUtil;
+import com.rocha.app.util.SaleRecordMapperUtil;
 
 @RestController
 @RequestMapping("/products")
@@ -22,15 +24,18 @@ public class ProductCommandController {
 	
 	@PostMapping
 	public ProductDto createProduct(@RequestBody ProductDto product) {
-		Product productResponse =  productService.createProduct(MapperUtil.mapper(product));
-		return MapperUtil.mapper(productResponse);
+		Product productResponse =  productService.createProduct(ProductMapperUtil.mapper(product));
+		return ProductMapperUtil.mapper(productResponse);
 	}
 	
 	
 	@PutMapping("/{id}")
 	public ProductDto updateProduc(@PathVariable long id, @RequestBody ProductDto product) {
-		Product productResponse =  productService.updateProduct(id, MapperUtil.mapper(product));
-		return MapperUtil.mapper(productResponse);
+		Product productResponse =  productService.updateProduct(id, ProductMapperUtil.mapper(product));
+		return ProductMapperUtil.mapper(productResponse);
 	}
+	
+	
+	
 
 }

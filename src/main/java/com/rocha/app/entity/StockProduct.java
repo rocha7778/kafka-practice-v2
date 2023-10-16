@@ -9,18 +9,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="PRODUCT_COMMAND")
+@Table(name="STOCK_PRODUCT")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Product {
+public class StockProduct {
 	
 	@Id
 	@GeneratedValue
 	private Long id;
     private String name;
     private String description;
-    private double price;
+    private Long productId;
     private double quantity;
 
 }

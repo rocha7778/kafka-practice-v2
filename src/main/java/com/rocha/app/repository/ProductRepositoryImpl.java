@@ -22,6 +22,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 		existingProduct.setName(product.getName());
 		existingProduct.setPrice(product.getPrice());
 		existingProduct.setDescription(product.getDescription());
+		existingProduct.setQuantity(product.getQuantity());
 		return productRepository.save(existingProduct);
 	}
 
