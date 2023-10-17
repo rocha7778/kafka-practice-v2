@@ -6,6 +6,7 @@ RUN ls /home/app
 
 
 FROM openjdk:17-jdk-slim
+ENV SPRING_PROFILES_ACTIVE=dev
 COPY --from=build /home/app/target/product-command-service-0.0.1-SNAPSHOT.jar /usr/local/lib/demo.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
@@ -16,6 +17,10 @@ ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
 
 # docker build -t app-rest:v1.0 .
 # docker create -p 8080:8080 --name web-rest-api  app-rest:v1.0
+# docker start web-rest-api
+# docker stats web-rest-api
+
+
 # docker run -it --rm -p 8080:8080  --name web-rest-api  app-rest:v1.0
 # docker  tag app-rest:v1.0   rocha7778/app-rest:v1.0
 # docker push rocha7778/app-rest:v1.0

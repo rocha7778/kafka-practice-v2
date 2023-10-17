@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rocha.app.dto.ProductDto;
-import com.rocha.app.dto.SaleRecordProductDto;
 import com.rocha.app.entity.Product;
 import com.rocha.app.service.IProductService;
 import com.rocha.app.util.ProductMapperUtil;
-import com.rocha.app.util.SaleRecordMapperUtil;
 
 @RestController
 @RequestMapping("/products")

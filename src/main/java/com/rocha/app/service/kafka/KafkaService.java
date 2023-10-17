@@ -13,6 +13,11 @@ public class KafkaService implements IKafkaService {
 
 	@Autowired
 	private KafkaTemplate<String, Object> kafkaTemplate;
+	
+	
+	public KafkaService() {
+		System.out.println("Cargando kafka real");
+	}
 
 	@Override
 	public void sendMessage(Product productCreated, String eventType) {

@@ -18,12 +18,17 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Override
 	public Product updateProduct(Long id, Product product) {
-		Product existingProduct = productRepository.findById(id).get();
+		Product existingProduct = findProducById(id);
 		existingProduct.setName(product.getName());
 		existingProduct.setPrice(product.getPrice());
 		existingProduct.setDescription(product.getDescription());
 		existingProduct.setQuantity(product.getQuantity());
 		return productRepository.save(existingProduct);
+	}
+
+	@Override
+	public Product findProducById(Long id) {
+		return  productRepository.findById(id).get();
 	}
 
 }

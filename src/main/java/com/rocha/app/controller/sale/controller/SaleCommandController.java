@@ -13,7 +13,7 @@ import com.rocha.app.util.SaleRecordMapperUtil;
 
 @RestController
 @RequestMapping("/products")
-public class ProductCommandController {
+public class SaleCommandController {
 	
 	@Autowired
 	private SaleService saleService;
