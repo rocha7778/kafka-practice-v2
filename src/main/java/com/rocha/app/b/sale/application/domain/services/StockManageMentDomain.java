@@ -1,4 +1,4 @@
-package com.rocha.app.b.sale.apllication.port.in;
+package com.rocha.app.b.sale.application.domain.services;
 
 import com.rocha.app.b.sale.application.domain.model.SaleRecordProductDto;
 import com.rocha.app.product.application.domain.model.ProductDto;

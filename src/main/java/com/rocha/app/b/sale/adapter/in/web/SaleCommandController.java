@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.rocha.app.b.sale.apllication.port.in.SaleServiceUseCase;
 import com.rocha.app.b.sale.application.domain.model.SaleRecordProductDto;
-import com.rocha.app.b.sale.application.domain.services.SaleService;
 import com.rocha.app.product.application.domain.model.ProductDto;
 import com.rocha.app.util.SaleRecordMapperUtil;
 
@@ -24,7 +24,7 @@ import com.rocha.app.util.SaleRecordMapperUtil;
 public class SaleCommandController {
 	
 	@Autowired
-	private SaleService saleService;
+	private SaleServiceUseCase saleService;
 	
 	
 	@PostMapping("/sell")
