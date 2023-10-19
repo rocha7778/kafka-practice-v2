@@ -4,8 +4,8 @@ import java.util.Date;
 
 import org.modelmapper.ModelMapper;
 
-import com.rocha.app.d.entity.SaleRecordProduct;
-import com.rocha.app.dto.SaleRecordProductDto;
+import com.rocha.app.b.sale.dto.SaleRecordProductDto;
+import com.rocha.app.b.sale.entity.SaleRecordProduct;
 
 public class SaleRecordMapperUtil {
 	

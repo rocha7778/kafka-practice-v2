@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.rocha.app.d.entity.Product;
-import com.rocha.app.dto.ProductDto;
+import com.rocha.app.a.product.dto.ProductDto;
+import com.rocha.app.a.product.entity.Product;
 
 public class ProductMapperUtilTest {
 
