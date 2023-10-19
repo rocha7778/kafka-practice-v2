@@ -15,7 +15,7 @@ import com.rocha.app.util.ProductMapperUtil;
 
 @RestController
 @RequestMapping("/products")
-public class ProductCommandController {
+public class ProductController {
 	
 	@Autowired
 	private IProductService productService;
