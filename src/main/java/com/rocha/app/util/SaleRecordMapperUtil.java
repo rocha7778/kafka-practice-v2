@@ -2,17 +2,16 @@ package com.rocha.app.util;
 
 import java.util.Date;
 
+import org.modelmapper.ModelMapper;
+
+import com.rocha.app.d.entity.SaleRecordProduct;
 import com.rocha.app.dto.SaleRecordProductDto;
-import com.rocha.app.entity.SaleRecordProduct;
 
 public class SaleRecordMapperUtil {
 	
-	public static SaleRecordProduct mapper(SaleRecordProduct saleRecordProduct) {
-		SaleRecordProduct saleRecordproduct = new SaleRecordProduct();
-		saleRecordproduct.setDate(saleRecordProduct.getDate());
-		saleRecordproduct.setId(saleRecordProduct.getId());
-		saleRecordproduct.setProductId(saleRecordProduct.getProductId());
-		saleRecordproduct.setQuantity(saleRecordProduct.getQuantity());
+	public static SaleRecordProductDto mapper(SaleRecordProduct saleRecordProduct) {
+		ModelMapper modelMapper = new ModelMapper();
+		SaleRecordProductDto saleRecordproduct = modelMapper.map(saleRecordProduct, SaleRecordProductDto.class);
 		return saleRecordproduct;
 	}
 	
