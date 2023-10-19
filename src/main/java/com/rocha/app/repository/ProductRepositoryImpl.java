@@ -30,5 +30,4 @@ public class ProductRepositoryImpl implements ProductRepository {
 	public Product findProducById(Long id) {
 		return  productRepository.findById(id).get();
 	}
-
 }

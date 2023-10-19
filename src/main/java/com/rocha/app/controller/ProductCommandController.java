@@ -20,6 +20,8 @@ public class ProductCommandController {
 	@Autowired
 	private IProductService productService;
 	
+	
+	
 	@PostMapping
 	public ProductDto createProduct(@RequestBody ProductDto product) {
 		Product productResponse =  productService.createProduct(ProductMapperUtil.mapper(product));
@@ -32,8 +34,5 @@ public class ProductCommandController {
 		Product productResponse =  productService.updateProduct(id, ProductMapperUtil.mapper(product));
 		return ProductMapperUtil.mapper(productResponse);
 	}
-	
-	
-	
 
 }

@@ -1,12 +1,12 @@
 package com.rocha.app.service.kafka;
 
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import com.rocha.app.entity.Product;
 
 @Service
-@Qualifier("kafkaServiceMock")
+@ConditionalOnProperty(name="service.mock", havingValue="true")
 public class KafkaServiceMock implements IKafkaService {
 
 	

@@ -30,6 +30,7 @@ ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
 # mysql
 
 # docker create -p 3306:3306 --name mysql-product-command --network cqrs  -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_DATABASE=product mysql 
+# docker start mysql-product-command
 # docker create -p 3306:3306 --name mysql-product-query  mysql   --network cqrs
 # use product;
 # select * from product.product_command;
