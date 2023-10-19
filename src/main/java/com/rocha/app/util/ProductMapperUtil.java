@@ -2,8 +2,8 @@ package com.rocha.app.util;
 
 import org.modelmapper.ModelMapper;
 
-import com.rocha.app.a.product.dto.ProductDto;
-import com.rocha.app.a.product.entity.Product;
+import com.rocha.app.product.application.domain.model.Product;
+import com.rocha.app.product.application.domain.model.ProductDto;
 
 public class ProductMapperUtil {
 	
