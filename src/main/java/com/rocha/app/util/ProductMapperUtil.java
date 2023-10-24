@@ -7,20 +7,17 @@ import com.rocha.app.a.product.entity.Product;
 
 public class ProductMapperUtil {
 	
-	
+	// use in the web layer
 	public static  ProductDto mapper(Product product) {
 		ModelMapper modelMapper = new ModelMapper();
 		ProductDto productDto = modelMapper.map(product, ProductDto.class);
 		return productDto;
 	}
 	
+	// in the entity layer
 	public static Product mapper(ProductDto productDto) {
-		Product product = new Product();
-		product.setDescription(productDto.getDescription());
-		product.setId(productDto.getId());
-		product.setName(productDto.getName());
-		product.setPrice(productDto.getPrice());
-		product.setQuantity(productDto.getQuantity());
+		ModelMapper modelMapper = new ModelMapper();
+		Product product = modelMapper.map(productDto, Product.class);
 		return product;
 	}
 

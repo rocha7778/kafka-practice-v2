@@ -31,4 +31,5 @@ public class ProductController {
 		Product productResponse =  productService.updateProduct(id, ProductMapperUtil.mapper(product));
 		return ProductMapperUtil.mapper(productResponse);
 	}
+	
 }

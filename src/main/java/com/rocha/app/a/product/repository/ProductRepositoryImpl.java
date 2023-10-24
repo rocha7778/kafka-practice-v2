@@ -18,7 +18,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Override
 	public Product updateProduct(Long id, Product product) {
-		Product existingProduct = findProducById(id);
+		Product existingProduct = findProductById(id);
 		existingProduct.setName(product.getName());
 		existingProduct.setPrice(product.getPrice());
 		existingProduct.setDescription(product.getDescription());
@@ -26,8 +26,14 @@ public class ProductRepositoryImpl implements ProductRepository {
 		return productRepository.save(existingProduct);
 	}
 
-	@Override
-	public Product findProducById(Long id) {
+	public Product findProductById(Long id) {
 		return  productRepository.findById(id).get();
 	}
+
+	@Override
+	public Product findProductByName(String name) {
+		return productRepository.findProductByName(name);
+	}
+
+	
 }

@@ -25,7 +25,7 @@ public class StockManagementService {
 	private IKafkaService kafkaService;
 
 	public void updateInventory(SaleRecordProduct saleRecordProduct) throws Exception {
-		Product currentProduct = productRepository.findProducById(saleRecordProduct.getProductId());
+		Product currentProduct = productRepository.findProductById(saleRecordProduct.getProductId());
 		var saleRecordDto = SaleRecordMapperUtil.mapper(saleRecordProduct);
 		var productStockDto = ProductMapperUtil.mapper(currentProduct);
 		ProductDto productUdated = StockManageMentDomain.updateInventory(saleRecordDto, productStockDto);
