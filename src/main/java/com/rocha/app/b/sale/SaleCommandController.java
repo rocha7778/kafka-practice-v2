@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.rocha.app.a.product.dto.ProductDto;
-import com.rocha.app.b.sale.dto.SaleRecordProductDto;
+import com.rocha.app.b.sale.entity.SaleRecordProduct;
 import com.rocha.app.b.sale.service.SaleService;
-import com.rocha.app.util.SaleRecordMapperUtil;
 
 
 @RestController
@@ -28,9 +26,9 @@ public class SaleCommandController {
 	
 	
 	@PostMapping("/sell")
-	public ProductDto sellProduct(@RequestBody SaleRecordProductDto saleRecordProduct) throws Exception {
-		saleService.registerSale(SaleRecordMapperUtil.mapper(saleRecordProduct));
-		return null;
+	public ResponseEntity<Object> sellProduct(@RequestBody SaleRecordProduct saleRecordProduct) throws Exception {
+		saleService.registerSale(saleRecordProduct);
+		return ResponseEntity.ok().build();
 	}
 	
 	

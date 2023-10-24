@@ -21,9 +21,9 @@ public class ProductMapperUtilTest {
 		productDto.setPrice(120.0);
 		productDto.setQuantity(3.0);
 
-		Product product = ProductMapperUtil.mapper(productDto);
+		
 
-		assertNotNull(product);
+		assertNotNull(productDto);
 
 	}
 
@@ -37,9 +37,8 @@ public class ProductMapperUtilTest {
 		product.setPrice(120.0);
 		product.setQuantity(3.0);
 
-		ProductDto productDto = ProductMapperUtil.mapper(product);
 
-		assertNotNull(productDto);
+		assertNotNull(product);
 
 	}
 

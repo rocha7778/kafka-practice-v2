@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.rocha.app.a.product.dto.ProductEvent;
 import com.rocha.app.a.product.entity.Product;
-import com.rocha.app.util.ProductMapperUtil;
 
 @Service
 @ConditionalOnProperty(name="service.mock", havingValue="false")
@@ -23,7 +22,7 @@ public class KafkaService implements IKafkaService {
 
 	@Override
 	public void sendMessage(Product productCreated, String eventType) {
-		ProductEvent event = new ProductEvent(eventType, ProductMapperUtil.mapper(productCreated));
+		ProductEvent event = new ProductEvent(eventType, productCreated);
 		kafkaTemplate.send("product-event-topic", event);
 	}
 }

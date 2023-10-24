@@ -3,14 +3,11 @@ package com.rocha.app.b.sale.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rocha.app.a.product.dto.ProductDto;
 import com.rocha.app.a.product.entity.Product;
 import com.rocha.app.a.product.repository.ProductRepository;
 import com.rocha.app.a.product.service.kafka.IKafkaService;
 import com.rocha.app.b.sale.entity.SaleRecordProduct;
 import com.rocha.app.b.sale.service.domain.StockManageMentDomain;
-import com.rocha.app.util.ProductMapperUtil;
-import com.rocha.app.util.SaleRecordMapperUtil;
 
 @Service
 public class StockManagementService {
@@ -26,9 +23,7 @@ public class StockManagementService {
 
 	public void updateInventory(SaleRecordProduct saleRecordProduct) throws Exception {
 		Product currentProduct = productRepository.findProductById(saleRecordProduct.getProductId());
-		var saleRecordDto = SaleRecordMapperUtil.mapper(saleRecordProduct);
-		var productStockDto = ProductMapperUtil.mapper(currentProduct);
-		ProductDto productUdated = StockManageMentDomain.updateInventory(saleRecordDto, productStockDto);
+		Product productUdated = StockManageMentDomain.updateInventory(saleRecordProduct, currentProduct);
 		
 		currentProduct.setQuantity(productUdated.getQuantity());
 		Product productUpdated = updateInventoryStock(currentProduct);

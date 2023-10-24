@@ -1,5 +1,7 @@
 package com.rocha.app.a.product.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -22,5 +24,9 @@ public class Product {
     private String description;
     private double price;
     private double quantity;
+    
+    // internal use
+    @JsonIgnore
+    private String internalCode;
 
 }

@@ -1,13 +1,13 @@
 package com.rocha.app.b.sale.service.domain;
 
-import com.rocha.app.a.product.dto.ProductDto;
-import com.rocha.app.b.sale.dto.SaleRecordProductDto;
+import com.rocha.app.a.product.entity.Product;
+import com.rocha.app.b.sale.entity.SaleRecordProduct;
 
 
 public class StockManageMentDomain {
 	
 
-	public ProductDto updateInventory(SaleRecordProductDto saleRecordProduct , ProductDto currentProduct) throws Exception {
+	public Product updateInventory(SaleRecordProduct saleRecordProduct , Product currentProduct) throws Exception {
 		
 		Double quantityAvailable = currentProduct.getQuantity();
 		Double quantityTosell = saleRecordProduct.getQuantity();
