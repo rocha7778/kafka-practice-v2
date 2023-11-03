@@ -4,9 +4,9 @@ import com.rocha.app.a.product.entity.Product;
 import com.rocha.app.b.sale.entity.SaleRecordProduct;
 
 
-public class StockManageMentDomain {
-	
+public class StockManageMentDomainImpl implements IStockManageMentDomain {
 
+	@Override
 	public Product updateInventory(SaleRecordProduct saleRecordProduct , Product currentProduct) throws Exception {
 		
 		Double quantityAvailable = currentProduct.getQuantity();

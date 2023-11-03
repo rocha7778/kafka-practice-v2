@@ -37,11 +37,8 @@ public class SaleCommandController {
 	  extends ResponseEntityExceptionHandler {
 
 	    @ExceptionHandler(value = { Exception.class })
-	    protected ResponseEntity<Object> handleConflict(
-	    		Exception ex, WebRequest request) {
-	       
-	        return handleExceptionInternal(ex, ex.getMessage(), 
-	          new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+	    protected ResponseEntity<Object> handleConflict(Exception ex, WebRequest request) {
+	         return handleExceptionInternal(ex, ex.getMessage(),   new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	    }
 	}
 

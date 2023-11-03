@@ -7,7 +7,7 @@ import com.rocha.app.a.product.entity.Product;
 import com.rocha.app.a.product.repository.ProductRepository;
 import com.rocha.app.a.product.service.kafka.IKafkaService;
 import com.rocha.app.b.sale.entity.SaleRecordProduct;
-import com.rocha.app.b.sale.service.domain.StockManageMentDomain;
+import com.rocha.app.b.sale.service.domain.IStockManageMentDomain;
 
 @Service
 public class StockManagementService {
@@ -16,7 +16,7 @@ public class StockManagementService {
 	private ProductRepository productRepository;
 
 	@Autowired
-	private StockManageMentDomain StockManageMentDomain;
+	private IStockManageMentDomain StockManageMentDomain;
 
 	@Autowired
 	private IKafkaService kafkaService;
