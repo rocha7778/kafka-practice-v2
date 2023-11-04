@@ -32,8 +32,8 @@ ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
 
 
 # docker run -it --rm -p 8080:8080  --name app-product-service app-product-service:v1.0
-# docker  tag app-product-service:v1.0   rocha7778/aapp-product-service:v1.0
-# docker push rocha7778/aapp-product-service:v1.0
+# docker  tag app-product-service:v1.0   rocha7778/app-product-service:v1.0
+# docker push rocha7778/app-product-service:v1.0
 # kubectl port-forward pod/web-java 8080:8080
 # 
 
