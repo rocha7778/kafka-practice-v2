@@ -2,7 +2,10 @@ FROM maven:3.6.3-openjdk-17 AS build
 COPY src /home/app/src
 COPY pom.xml /home/app
 
+
+
 RUN mvn -f /home/app/pom.xml clean package -DskipTests=true
+
 
 FROM openjdk:17-jdk-slim
 COPY --from=build /home/app/target/product-command-service-0.0.1-SNAPSHOT.jar /usr/local/lib/demo.jar
@@ -15,7 +18,7 @@ ENTRYPOINT ["java","-jar","/usr/local/lib/demo.jar"]
 
 
 # docker build -t app-product-service:v1.0 .
-# docker create -p 8080:8080 --name web-rest-api  --network rocha app-product-service:v1.0
+# docker create -p 8080:8080 --name web-rest-api  --network rocha -e MYSQL_DATABASE=product -e MYSQL_HOST="mysql-product-command" -e MYSQL_PORT=3306 -e MYSQL_USERNAME=root -e MYSQL_ROOT_PASSWORD="123546" -e SPRING_PROFILES_ACTIVE=prod -e CONTAINER_PORT=8080  app-product-service:v1.0
 # docker start web-rest-api
 # docker logs web-rest-api -f
 # docker rm web-rest-api
