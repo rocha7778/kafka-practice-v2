@@ -7,4 +7,5 @@ public interface ProductRepository {
 	public Product updateProduct(Long id, Product product);
 	public Product findProductById(Long id);
 	public Product findProductByName(String name);
+	public Product findProductByIdTransactional(Long id);
 }

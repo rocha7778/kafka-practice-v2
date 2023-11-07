@@ -1,17 +1,19 @@
 package com.rocha.app.a.product.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="PRODUCT_COMMAND")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -24,6 +26,9 @@ public class Product {
     private String description;
     private double price;
     private double quantity;
+    
+    @OneToMany
+    private List<Vendor> verdors = new ArrayList<>();
     
     // internal use
     @JsonIgnore

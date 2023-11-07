@@ -2,6 +2,7 @@ package com.rocha.app.a.product.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.rocha.app.a.product.entity.Product;
 
@@ -15,6 +16,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 	public Product createProduct(Product product) {
 		return productRepository.save(product);
 	}
+	
 
 	@Override
 	public Product updateProduct(Long id, Product product) {
@@ -26,6 +28,19 @@ public class ProductRepositoryImpl implements ProductRepository {
 		return productRepository.save(existingProduct);
 	}
 
+	@Override
+	
+	public Product findProductByIdTransactional(Long id) {
+		Product p =  findProductById(id);
+		p.setDescription("Rocha");
+		p = productRepository.save(p);
+		
+		
+		return p;
+		
+	}
+	
+	@Transactional(readOnly = true)
 	public Product findProductById(Long id) {
 		return  productRepository.findById(id).get();
 	}

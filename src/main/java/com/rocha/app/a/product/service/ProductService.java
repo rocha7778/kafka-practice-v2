@@ -7,6 +7,7 @@ import com.rocha.app.a.product.entity.Product;
 import com.rocha.app.a.product.repository.ProductRepository;
 import com.rocha.app.a.product.service.kafka.IKafkaService;
 
+
 @Service
 public class ProductService implements IProductService {
 
@@ -17,10 +18,16 @@ public class ProductService implements IProductService {
 	private IKafkaService kafkaService;
 
 	@Override
+	
 	public Product createProduct(Product product) {
 		Product producCreated = productRepository.createProduct(product);
 		kafkaService.sendMessage(producCreated, "CreatedProduct");
 		return producCreated;
+	}
+	
+	@Override
+	public Product createProductInternal(Product product) {
+		return this.createProduct(product);
 	}
 
 	@Override
@@ -28,6 +35,11 @@ public class ProductService implements IProductService {
 		Product productCreated = productRepository.updateProduct(id, product);
 		kafkaService.sendMessage(productCreated, "UpdatedProduct");
 		return productCreated;
+	}
+
+	@Override
+	public Product findProductByIdTransactional(Long id) {
+		return productRepository.findProductByIdTransactional(id);
 	}
 }
 
