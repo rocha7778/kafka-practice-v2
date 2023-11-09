@@ -1,8 +1,11 @@
 package com.rocha.app.a.product.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,19 +14,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Product {
+public class ShoppingCar {
 	
 	@Id
-	@GeneratedValue
 	private Long id;
-    private String name;
-    private String description;
-    private double price;
-    private double quantity;
-    
-    
-    
-    
-  
+	
+	@OneToMany
+	private List<Product> products;
+	
+	@OneToOne
+	private Customer customer;
 
 }

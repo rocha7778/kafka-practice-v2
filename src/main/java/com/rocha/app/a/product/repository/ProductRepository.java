@@ -1,5 +1,7 @@
 package com.rocha.app.a.product.repository;
 
+import java.util.List;
+
 import com.rocha.app.a.product.entity.Product;
 
 public interface ProductRepository {
@@ -8,4 +10,5 @@ public interface ProductRepository {
 	public Product findProductById(Long id);
 	public Product findProductByName(String name);
 	public Product findProductByIdTransactional(Long id);
+	public List<Product> findAll();
 }

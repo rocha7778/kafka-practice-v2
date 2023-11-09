@@ -1,12 +1,14 @@
 package com.rocha.app.a.product.repository;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.rocha.app.a.product.entity.Product;
 
-@Service
+@Repository
 public class ProductRepositoryImpl implements ProductRepository {
 
 	@Autowired
@@ -34,6 +36,7 @@ public class ProductRepositoryImpl implements ProductRepository {
 		Product p =  findProductById(id);
 		p.setDescription("Rocha");
 		p = productRepository.save(p);
+		productRepository.delete(p);
 		
 		
 		return p;
@@ -48,6 +51,13 @@ public class ProductRepositoryImpl implements ProductRepository {
 	@Override
 	public Product findProductByName(String name) {
 		return productRepository.findProductByName(name);
+	}
+
+
+	@Override
+	public List<Product> findAll() {
+		// TODO Auto-generated method stub
+		return productRepository.findAll();
 	}
 
 	

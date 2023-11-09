@@ -1,5 +1,7 @@
 package com.rocha.app.a.product.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,7 @@ public class ProductService implements IProductService {
 	
 	@Override
 	public Product createProductInternal(Product product) {
+		
 		return this.createProduct(product);
 	}
 
@@ -40,6 +43,12 @@ public class ProductService implements IProductService {
 	@Override
 	public Product findProductByIdTransactional(Long id) {
 		return productRepository.findProductByIdTransactional(id);
+	}
+
+	@Override
+	public List<Product> findAll() {
+		// TODO Auto-generated method stub
+		return productRepository.findAll();
 	}
 }
 
