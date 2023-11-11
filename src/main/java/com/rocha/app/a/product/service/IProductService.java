@@ -12,6 +12,8 @@ public interface IProductService {
 	public Product createProductInternal(Product product);
 
 	public Product findProductByIdTransactional(Long id);
+	
+	public Product findProductById(Long id);
 
 	public List<Product> findAll();
 

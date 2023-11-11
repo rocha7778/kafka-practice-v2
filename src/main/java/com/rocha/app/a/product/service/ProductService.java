@@ -50,6 +50,11 @@ public class ProductService implements IProductService {
 		// TODO Auto-generated method stub
 		return productRepository.findAll();
 	}
+
+	@Override
+	public Product findProductById(Long id) {
+		return productRepository.findProductById(id);
+	}
 }
 
 
