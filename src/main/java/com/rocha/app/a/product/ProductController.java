@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rocha.app.a.product.entity.NumberGenerator;
 import com.rocha.app.a.product.entity.NumberGeneratorSingleton;
 import com.rocha.app.a.product.entity.Product;
+import com.rocha.app.a.product.repository.ProductSpecification;
 import com.rocha.app.a.product.service.IProductService;
 
 @RestController
@@ -27,8 +29,6 @@ public class ProductController {
 
 	@Autowired
 	private IProductService productService;
-
-	
 
 	@Autowired
 	private NumberGenerator numberGenerator;
@@ -58,18 +58,23 @@ public class ProductController {
 
 	}
 
-	
-
 	@GetMapping("/{id}")
 	public Product getProductById(@PathVariable Long id) {
 		return productService.findProductByIdTransactional(id);
+	}
+
+	@GetMapping("/price-less-than/{price}/quantity-less-than/{quantity}")
+	public List<Product> getProductsByCriteria(@PathVariable Double price,
+			@PathVariable Double quantity) {
+		Specification<Product> priceLessThan = ProductSpecification.priceLessThan(price);
+		Specification<Product> quantityLessThan = ProductSpecification.quantityLessThan(quantity);
+
+		return productService.findallSpec(priceLessThan.or(quantityLessThan));
 	}
 
 	@GetMapping()
 	public List<Product> getProducs() {
 		return productService.findAll();
 	}
-
-	
 
 }

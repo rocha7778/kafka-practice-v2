@@ -3,6 +3,7 @@ package com.rocha.app.a.product.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.rocha.app.a.product.entity.Product;
@@ -44,17 +45,24 @@ public class ProductService implements IProductService {
 	public Product findProductByIdTransactional(Long id) {
 		return productRepository.findProductByIdTransactional(id);
 	}
+	
+	@Override
+	public List<Product> findallSpec(Specification<Product> spec) {
+		return productRepository.findall(spec);
+	}
 
 	@Override
 	public List<Product> findAll() {
-		// TODO Auto-generated method stub
 		return productRepository.findAll();
 	}
+	
 
 	@Override
 	public Product findProductById(Long id) {
 		return productRepository.findProductById(id);
 	}
+
+	
 }
 
 

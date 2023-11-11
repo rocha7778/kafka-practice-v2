@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rocha.app.a.product.entity.Product;
 import com.rocha.app.a.product.entity.Vendor;
-import com.rocha.app.a.product.repository.VendorRepositoryJPA;
 import com.rocha.app.a.product.service.IProductService;
+import com.rocha.app.a.vendor.repository.VendorRepositoryJPA;
 
 @RestController
 @RequestMapping("/vendors")

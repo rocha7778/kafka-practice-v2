@@ -1,4 +1,4 @@
-package com.rocha.app.a.product.repository;
+package com.rocha.app.a.vendor.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -3,6 +3,7 @@ package com.rocha.app.a.product.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -56,8 +57,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 
 	@Override
 	public List<Product> findAll() {
-		// TODO Auto-generated method stub
 		return productRepository.findAll();
+	}
+	
+	@Override
+	public List<Product> findall(Specification<Product> spec){
+		return productRepository.findAll(spec);
 	}
 
 	
