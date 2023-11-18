@@ -22,7 +22,7 @@ public class StockManagementService {
 	private IKafkaService kafkaService;
 
 	public void updateInventory(SaleRecordProduct saleRecordProduct) throws Exception {
-		Product currentProduct = productRepository.findProductById(saleRecordProduct.getProductId());
+		Product currentProduct = productRepository.findProductById(saleRecordProduct.getProductId()).get();
 		Product productUdated = StockManageMentDomain.updateInventory(saleRecordProduct, currentProduct);
 		
 		currentProduct.setQuantity(productUdated.getQuantity());
@@ -38,7 +38,7 @@ public class StockManagementService {
 		return false;
 	}
 
-	public Product updateInventoryStock(Product currentProduct) {
+	public Product updateInventoryStock(Product currentProduct) throws Exception {
 		return productRepository.updateProduct(currentProduct.getId(), currentProduct);
 	}
 

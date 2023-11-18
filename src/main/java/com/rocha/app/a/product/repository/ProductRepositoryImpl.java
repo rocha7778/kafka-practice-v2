@@ -1,6 +1,7 @@
 package com.rocha.app.a.product.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.rocha.app.a.product.entity.Product;
+
 
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
@@ -22,8 +24,8 @@ public class ProductRepositoryImpl implements ProductRepository {
 	
 
 	@Override
-	public Product updateProduct(Long id, Product product) {
-		Product existingProduct = findProductById(id);
+	public Product updateProduct(Long id, Product product) throws Exception {
+		Product existingProduct = findProductById(id).get();
 		existingProduct.setName(product.getName());
 		existingProduct.setPrice(product.getPrice());
 		existingProduct.setDescription(product.getDescription());
@@ -31,22 +33,11 @@ public class ProductRepositoryImpl implements ProductRepository {
 		return productRepository.save(existingProduct);
 	}
 
-	@Override
-	
-	public Product findProductByIdTransactional(Long id) {
-		Product p =  findProductById(id);
-		p.setDescription("Rocha");
-		p = productRepository.save(p);
-		productRepository.delete(p);
-		
-		
-		return p;
-		
-	}
+
 	
 	@Transactional(readOnly = true)
-	public Product findProductById(Long id) {
-		return  productRepository.findById(id).get();
+	public Optional<Product> findProductById(Long id) throws Exception {
+		return  productRepository.findById(id);
 	}
 
 	@Override
@@ -63,6 +54,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 	@Override
 	public List<Product> findall(Specification<Product> spec){
 		return productRepository.findAll(spec);
+	}
+
+
+	@Override
+	public void deleteProductById(Long id) {
+		productRepository.deleteById(id);
 	}
 
 	

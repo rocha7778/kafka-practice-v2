@@ -59,7 +59,12 @@ public class VendorController {
 		List<Product> productEntyties = new ArrayList<>();
 
 		products.stream().forEach(p -> {
-			productEntyties.add(productService.findProductById(p.getId()));
+			try {
+				productEntyties.add(productService.findProductById(p.getId()).get());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		});
 
 		v.setProducts(productEntyties);

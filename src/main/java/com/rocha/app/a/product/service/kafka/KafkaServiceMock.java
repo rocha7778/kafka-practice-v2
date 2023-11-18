@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.rocha.app.a.product.entity.Product;
 
 @Service
-@ConditionalOnProperty(name="service.mock", havingValue="true")
 public class KafkaServiceMock implements IKafkaService {
 
 	

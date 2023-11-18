@@ -1,6 +1,7 @@
 package com.rocha.app.a.product.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
@@ -30,21 +31,16 @@ public class ProductService implements IProductService {
 	
 	@Override
 	public Product createProductInternal(Product product) {
-		
 		return this.createProduct(product);
 	}
 
 	@Override
-	public Product updateProduct(long id, Product product) {
+	public Product updateProduct(long id, Product product) throws Exception {
 		Product productCreated = productRepository.updateProduct(id, product);
 		kafkaService.sendMessage(productCreated, "UpdatedProduct");
 		return productCreated;
 	}
 
-	@Override
-	public Product findProductByIdTransactional(Long id) {
-		return productRepository.findProductByIdTransactional(id);
-	}
 	
 	@Override
 	public List<Product> findallSpec(Specification<Product> spec) {
@@ -58,8 +54,13 @@ public class ProductService implements IProductService {
 	
 
 	@Override
-	public Product findProductById(Long id) {
+	public Optional<Product> findProductById(Long id) throws Exception {
 		return productRepository.findProductById(id);
+	}
+
+	@Override
+	public void deleteProductById(long id) {
+		productRepository.deleteProductById(id);
 	}
 
 	
