@@ -1,6 +1,7 @@
 package com.rocha.app.a.product.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
@@ -23,6 +24,13 @@ public class ProductServiceTest2 {
 		customerService.createProduct(p);
 		List<Product> list = customerService.findAll();
 		assertEquals(1, list.size());
+	}
+	
+	@Test
+	public void createProduct() {
+		Product p = Product.builder().id(1l).name("name").description("descripction").price(0.3).quantity(11).build();
+		Product productCreated = customerService.createProduct(p);
+		assertNotNull(productCreated);
 	}
 
 }
