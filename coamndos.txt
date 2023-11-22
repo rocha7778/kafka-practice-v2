@@ -1,0 +1,1 @@
+mvn clean test jacoco:report ## generar reporte covertura de codigo

@@ -86,6 +86,18 @@ public class ProductController {
 
 		return productService.findallSpec(priceLessThan.or(quantityLessThan));
 	}
+	
+	
+	@GetMapping("/price-greater-than/{initial_range}/price-less-than/{final_range}")
+	public List<Product> getProductsByPriceRange(@PathVariable Double initial_range, @PathVariable Double final_range) {
+		Specification<Product> priceGreaterThan = ProductSpecification.priceGreaterThan(initial_range);
+		Specification<Product> quantityLessThan = ProductSpecification.priceLessThan(final_range);
+
+		return productService.findallSpec(priceGreaterThan.and(quantityLessThan));
+	}
+	
+	
+	
 
 	@GetMapping()
 	public List<Product> getProducs() {
