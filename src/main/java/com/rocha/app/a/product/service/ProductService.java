@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.rocha.app.a.aspect.Loggable;
 import com.rocha.app.a.product.entity.Product;
 import com.rocha.app.a.product.repository.ProductRepository;
 import com.rocha.app.a.product.service.kafka.IKafkaService;
@@ -30,15 +31,17 @@ public class ProductService implements IProductService {
 	}
 	
 	@Override
+	@Loggable
 	public Product createProductInternal(Product product) {
 		return this.createProduct(product);
 	}
 
 	@Override
+	@Loggable
 	public Product updateProduct(long id, Product product) throws Exception {
-		Product productCreated = productRepository.updateProduct(id, product);
-		kafkaService.sendMessage(productCreated, "UpdatedProduct");
-		return productCreated;
+		Product productUpdated = productRepository.updateProduct(id, product);
+		kafkaService.sendMessage(productUpdated, "UpdatedProduct");
+		return productUpdated;
 	}
 
 	

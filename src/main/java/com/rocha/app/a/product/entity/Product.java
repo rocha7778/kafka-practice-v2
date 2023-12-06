@@ -37,6 +37,10 @@ public class Product {
     private double quantity;
     
     @JsonIgnore
+    @CreationTimestamp
+    private Date createdAt;
+    
+    @JsonIgnore
     private boolean isDeleted = false;
     
     @JsonIgnore
@@ -46,9 +50,6 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
     
-    @JsonIgnore
-    @CreationTimestamp
-    private Date createdAt;
 
 
 }

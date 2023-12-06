@@ -1,6 +1,5 @@
 package com.rocha.app.a.product.service.kafka;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import com.rocha.app.a.product.entity.Product;
